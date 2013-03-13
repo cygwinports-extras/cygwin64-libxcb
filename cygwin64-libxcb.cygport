@@ -1,0 +1,47 @@
+CROSS_HOST="x86_64-pc-cygwin"
+inherit cross
+
+NAME="cygwin64-libxcb"
+VERSION=1.9
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="XCB libraries for Cygwin 64bit toolchain"
+DESCRIPTION="libxcb provides an interface to the X Window System protocol,
+which replaces the current Xlib interface. Xlib can also use XCB as a transport
+layer, allowing software to make requests and receive responses with both,
+which eases porting to XCB. However, client programs, libraries, and toolkits
+will gain the most benefit from a native XCB port."
+HOMEPAGE="http://xcb.sourceforge.net/"
+SRC_URI="http://xcb.freedesktop.org/dist/libxcb-${VERSION}.tar.bz2"
+SRC_DIR="libxcb-${VERSION}"
+PATCH_URI="1.8.1-no-pthread-stubs.patch"
+
+CYGCONF_ARGS="
+	--disable-build-docs
+	--enable-composite
+	--enable-damage
+	--disable-dpms
+	--disable-dri2
+	--enable-glx
+	--enable-randr
+	--enable-record
+	--enable-render
+	--enable-res
+	--enable-screensaver
+	--disable-selinux
+	--enable-shape
+	--enable-shm
+	--enable-sync
+	--disable-xevie
+	--enable-xfixes
+	--enable-xinerama
+	--enable-xinput
+	--disable-xfree86-dri
+	--disable-xprint
+	--enable-xtest
+	--disable-xv
+	--disable-xvmc
+"
+MAKEOPTS+=" man_MANS= "
+
+KEEP_LA_FILES="none"
